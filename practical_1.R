@@ -79,3 +79,18 @@ summary(peopledata)
 with(peopledata, plot(Age, Height, main="Age versus Height", 
                       xlab="Age", ylab="Height", col="blue", pch=18, 
                       log="xy"))
+
+#lattice
+library(lattice)
+(scatter_lattice<- xyplot(Age~Height, peopledata,main="Age versus Height" , xlab="Age", 
+                          ylab="Height", col= "blue", pch=18,scales = list(log=TRUE))) 
+
+(scatter_latice_update <- update(scatter_lattice, col = "violet", pch = 20))
+
+# ggplot
+library(ggplot2)
+
+ggplot(peopledata, aes(x = Age, y = Height)) + 
+  geom_point(size = 0.5) + 
+  ggtitle("Age versus Height") + 
+  xlab("Age") + ylab("Height")
